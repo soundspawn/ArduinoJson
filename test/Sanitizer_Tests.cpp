@@ -7,21 +7,26 @@
 #include <gtest/gtest.h>
 #include <ArduinoJson.h>
 
-TEST(SanitizerTests, EmptyString)
-{
-	char output[16];
-	sanitizeJson("", output, sizeof(output));
+TEST(SanitizerTests, EmptyString) {
+  char output[16];
+  sanitizeJson("", output, sizeof(output));
 
-	ASSERT_STREQ("", output);
+  ASSERT_STREQ("", output);
 }
 
-TEST(SanitizerTests, ValidJson)
-{
-	const char* input = "{\"a\":[\"b\",1,2.3,true,false,{}]}";
+TEST(SanitizerTests, ValidJson) {
+  const char* input = "{\"a\":[\"b\",1,2.3,true,false,{}]}";
+  char output[64];
 
-	char output[64];
+  sanitizeJson(input, output, sizeof(output));
 
-	sanitizeJson(input, output, sizeof(output));
+  ASSERT_STREQ(input, output);
+}
 
-	ASSERT_STREQ(input, output);
+TEST(SanitizerTests, BufferTooSmall) {
+  char output[2];
+
+  sanitizeJson("[{}]", output, sizeof(output));
+
+  ASSERT_STREQ("[", output);
 }

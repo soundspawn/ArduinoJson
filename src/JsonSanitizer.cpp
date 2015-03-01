@@ -11,4 +11,5 @@
 void ArduinoJson::sanitizeJson(const char* input, char* output,
                                size_t outputSize) {
   strncpy(output, input, outputSize);
+  output[outputSize - 1] = 0;
 }
