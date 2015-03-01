@@ -7,6 +7,7 @@
 #include "../include/ArduinoJson/DynamicJsonBuffer.hpp"
 #include "../include/ArduinoJson/JsonArray.hpp"
 #include "../include/ArduinoJson/JsonObject.hpp"
+#include "../include/ArduinoJson/JsonSanitizer.hpp"
 #include "../include/ArduinoJson/StaticJsonBuffer.hpp"
 
 using namespace ArduinoJson;
