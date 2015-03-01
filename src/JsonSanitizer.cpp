@@ -6,7 +6,9 @@
 
 #include "../include/ArduinoJson/JsonSanitizer.hpp"
 
-void ArduinoJson::sanitizeJson(const char*, char* output, size_t)
-{
-  output[0] = 0;
+#include <string.h>
+
+void ArduinoJson::sanitizeJson(const char* input, char* output,
+                               size_t outputSize) {
+  strncpy(output, input, outputSize);
 }

@@ -9,8 +9,19 @@
 
 TEST(SanitizerTests, EmptyString)
 {
-	char result[16];
-	sanitizeJson("", result, sizeof(result));
+	char output[16];
+	sanitizeJson("", output, sizeof(output));
 
-	ASSERT_STREQ("", result);
+	ASSERT_STREQ("", output);
+}
+
+TEST(SanitizerTests, ValidJson)
+{
+	const char* input = "{\"a\":[\"b\",1,2.3,true,false,{}]}";
+
+	char output[64];
+
+	sanitizeJson(input, output, sizeof(output));
+
+	ASSERT_STREQ(input, output);
 }
