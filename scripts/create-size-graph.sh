@@ -2,6 +2,8 @@
 
 set -eu
 
+echo "Tag;Date;Parser;Generator" > sizes.csv
+
 git tag | while read TAG
 do 
 
@@ -31,5 +33,6 @@ do
 		echo "JsonGeneratorExample compilation failed."
 	fi
 
+	echo "$TAG;$DATE;$PARSER_SIZE;$GENERATOR_SIZE" >> sizes.csv
 
 done
