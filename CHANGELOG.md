@@ -20,6 +20,15 @@ The `String` class is **bad** because it uses dynamic memory allocation.
 Compared to static allocation, it compiles to a bigger, slower program, and is less predictable.
 You certainly don't want that in an embedded environment!
 
+v4.5
+----
+
+* Fixed buffer overflow when input contains a backslash followed by a terminator (issue #81)
+
+**Upgrading is recommended** since previous versions contain a potential security risk.
+
+Special thanks to [Giancarlo Canales Barreto](https://github.com/gcanalesb) for finding this nasty bug.
+
 v4.4
 ----
 
