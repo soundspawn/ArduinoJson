@@ -41,6 +41,12 @@ class JsonWriter {
     _length += QuotedString::printTo(value, _sink);
   }
 
+  void writeString(long value) {
+	char temp[50];
+	snprintf(temp,50,"%li",value);
+    _length += QuotedString::printTo(temp, _sink);
+  }
+
   void writeLong(long value) { _length += _sink.print(value); }
 
   void writeBoolean(bool value) {

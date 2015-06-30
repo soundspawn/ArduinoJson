@@ -98,7 +98,7 @@ void JsonVariant::writeTo(JsonWriter &writer) const {
   else if (is<const char *>())
     writer.writeString(as<const char *>());
   else if (is<long>())
-    writer.writeLong(as<long>());
+    writer.writeString(as<long>());
   else if (is<bool>())
     writer.writeBoolean(as<bool>());
   else if (is<double>()) {
